@@ -576,23 +576,51 @@ export default function Home() {
               <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-white/80 hover:text-white text-sm transition">
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>📚</span>
                     Help Center
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/80 hover:text-white text-sm transition">
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>🔒</span>
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/80 hover:text-white text-sm transition">
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>📄</span>
                     Terms of Service
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-white/80 hover:text-white text-sm transition">
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>📧</span>
                     Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>📖</span>
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>💬</span>
+                    Community Forum
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>📝</span>
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-white/80 hover:text-white text-sm transition flex items-center gap-2">
+                    <span>⭐</span>
+                    Give Feedback
                   </a>
                 </li>
               </ul>
@@ -601,54 +629,75 @@ export default function Home() {
             {/* Social Media */}
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
-              <div className="flex gap-4 mb-4">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"
-                  aria-label="Facebook"
-                >
-                  <span className="text-lg">📘</span>
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"
-                  aria-label="Twitter"
-                >
-                  <span className="text-lg">🐦</span>
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"
-                  aria-label="Instagram"
-                >
-                  <span className="text-lg">📷</span>
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"
-                  aria-label="LinkedIn"
-                >
-                  <span className="text-lg">💼</span>
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"
-                  aria-label="YouTube"
-                >
-                  <span className="text-lg">📺</span>
-                </a>
-              </div>
-              <p className="text-white/60 text-xs">
+              <ul className="space-y-2">
+                <li>
+                  <a 
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white text-sm transition flex items-center gap-2"
+                  >
+                    <span>📘</span>
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white text-sm transition flex items-center gap-2"
+                  >
+                    <span>🐦</span>
+                    Twitter
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white text-sm transition flex items-center gap-2"
+                  >
+                    <span>📷</span>
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white text-sm transition flex items-center gap-2"
+                  >
+                    <span>💼</span>
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://youtube.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white text-sm transition flex items-center gap-2"
+                  >
+                    <span>📺</span>
+                    YouTube
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white text-sm transition flex items-center gap-2"
+                  >
+                    <span>💻</span>
+                    GitHub
+                  </a>
+                </li>
+              </ul>
+              <p className="text-white/60 text-xs mt-4">
                 Connect with us on social media for updates and tips!
               </p>
             </div>
