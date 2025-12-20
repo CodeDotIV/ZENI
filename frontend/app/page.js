@@ -455,8 +455,18 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Sai Manaswini - Project Head */}
             <div className="bg-gradient-to-br from-purple-500 to-indigo-600 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:rotate-1 transition-all duration-300 text-center">
-              <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-pulse">
-                👩‍💼
+              <div className="w-32 h-32 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                <iframe
+                  width="128"
+                  height="128"
+                  src="https://www.youtube.com/embed/sxmTTS4qros?autoplay=1&loop=1&playlist=sxmTTS4qros&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1"
+                  title="Sai Manaswini"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full rounded-full object-cover"
+                  style={{ pointerEvents: 'none' }}
+                ></iframe>
               </div>
               <h3 className="text-2xl font-bold text-white mb-1">Sai Manaswini</h3>
               <p className="text-white/90 font-semibold mb-3">Project Head</p>
