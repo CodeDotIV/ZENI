@@ -2,9 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
 const QUESTIONS = [
   { id: 'field_of_study', question: "What are you studying?", type: 'text', required: true },
@@ -37,21 +34,23 @@ export default function Onboarding() {
   const handleComplete = async () => {
     setLoading(true)
     try {
-      const token = localStorage.getItem('token')
       const user = JSON.parse(localStorage.getItem('user') || '{}')
-
-      await axios.post(
-        `${API_URL}/api/auth/onboarding`,
-        {
-          user_id: user.id,
-          ...answers,
-          onboarding_complete: true
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-
-      // Update user in localStorage
-      localStorage.setItem('user', JSON.stringify({ ...user, onboarding_complete: true }))
+      
+      // Update user in localStorage with onboarding data
+      const updatedUser = {
+        ...user,
+        ...answers,
+        onboarding_complete: true
+      }
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+      
+      // Also update in users list
+      const users = JSON.parse(localStorage.getItem('zeni_users') || '[]')
+      const userIndex = users.findIndex(u => u.id === user.id)
+      if (userIndex !== -1) {
+        users[userIndex] = { ...users[userIndex], ...answers, onboarding_complete: true }
+        localStorage.setItem('zeni_users', JSON.stringify(users))
+      }
       
       router.push('/dashboard')
     } catch (error) {

@@ -2,11 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
-// Icons temporarily removed - install lucide-react to restore
-// import { Calendar, MessageCircle, Plus, CheckCircle, Clock } from 'lucide-react'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
 export default function Dashboard() {
   const router = useRouter()
@@ -31,13 +26,14 @@ export default function Dashboard() {
     }
   }
 
-  const fetchTasks = async () => {
+  const fetchTasks = () => {
     try {
-      const token = localStorage.getItem('token')
-      const response = await axios.get(`${API_URL}/api/tasks`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      setTasks(response.data.tasks || [])
+      const userData = localStorage.getItem('user')
+      if (userData) {
+        const user = JSON.parse(userData)
+        const userTasks = JSON.parse(localStorage.getItem(`zeni_tasks_${user.id}`) || '[]')
+        setTasks(userTasks)
+      }
     } catch (error) {
       console.error('Error fetching tasks:', error)
     } finally {

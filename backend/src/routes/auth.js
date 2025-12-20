@@ -10,6 +10,11 @@ const router = express.Router();
 let inMemoryUsers = [];
 let userIdCounter = 1;
 
+// Test endpoint
+router.get('/test', (req, res) => {
+  res.json({ message: 'Auth route is working!', users: inMemoryUsers.length });
+});
+
 // Register
 router.post('/register', [
   body('email').isEmail().normalizeEmail(),
@@ -24,62 +29,29 @@ router.post('/register', [
 
     const { email, password, first_name } = req.body;
 
-    // Try database first, fallback to in-memory storage
-    let user;
-    let useDatabase = false;
-
-    // Test database connection with timeout
-    try {
-      const testQuery = pool.query('SELECT 1');
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Database timeout')), 1000)
-      );
-      await Promise.race([testQuery, timeoutPromise]);
-      useDatabase = true;
-    } catch (dbError) {
-      // Database not available - use in-memory storage
-      useDatabase = false;
+    // Use in-memory storage (works without database)
+    // Check if user already exists
+    const existingUser = inMemoryUsers.find(u => u.email === email);
+    if (existingUser) {
+      return res.status(400).json({ error: 'User already exists' });
     }
 
-    if (useDatabase) {
-      // Use database
-      const existingUser = await pool.query(
-        'SELECT id FROM users WHERE email = $1',
-        [email]
-      );
+    // Hash password
+    const passwordHash = await bcrypt.hash(password, 10);
 
-      if (existingUser.rows.length > 0) {
-        return res.status(400).json({ error: 'User already exists' });
-      }
-
-      const passwordHash = await bcrypt.hash(password, 10);
-      const result = await pool.query(
-        `INSERT INTO users (email, password_hash, first_name)
-         VALUES ($1, $2, $3)
-         RETURNING id, email, first_name, onboarding_complete`,
-        [email, passwordHash, first_name]
-      );
-      user = result.rows[0];
-    } else {
-      // Use in-memory storage
-      const existingUser = inMemoryUsers.find(u => u.email === email);
-      if (existingUser) {
-        return res.status(400).json({ error: 'User already exists' });
-      }
-
-      const passwordHash = await bcrypt.hash(password, 10);
-      user = {
-        id: `mem-${userIdCounter++}`,
-        email: email,
-        first_name: first_name || null,
-        onboarding_complete: false
-      };
-      
-      inMemoryUsers.push({
-        ...user,
-        password_hash: passwordHash
-      });
-    }
+    // Create user in memory
+    const user = {
+      id: `mem-${userIdCounter++}`,
+      email: email,
+      first_name: first_name || null,
+      onboarding_complete: false
+    };
+    
+    // Store user in memory
+    inMemoryUsers.push({
+      ...user,
+      password_hash: passwordHash
+    });
 
     // Generate token
     const token = jwt.sign(
@@ -116,58 +88,26 @@ router.post('/login', [
 
     const { email, password } = req.body;
 
-    // Try database first, fallback to in-memory storage
-    let user;
-    let useDatabase = false;
-
-    // Test database connection with timeout
-    try {
-      const testQuery = pool.query('SELECT 1');
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Database timeout')), 1000)
-      );
-      await Promise.race([testQuery, timeoutPromise]);
-      useDatabase = true;
-    } catch (dbError) {
-      // Database not available - use in-memory storage
-      useDatabase = false;
+    // Use in-memory storage (works without database)
+    // Find user in memory
+    const foundUser = inMemoryUsers.find(u => u.email === email);
+    if (!foundUser) {
+      return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    if (useDatabase) {
-      // Use database
-      const result = await pool.query(
-        'SELECT id, email, password_hash, first_name, onboarding_complete FROM users WHERE email = $1',
-        [email]
-      );
-
-      if (result.rows.length === 0) {
-        return res.status(401).json({ error: 'Invalid credentials' });
-      }
-
-      user = result.rows[0];
-      const validPassword = await bcrypt.compare(password, user.password_hash);
-      if (!validPassword) {
-        return res.status(401).json({ error: 'Invalid credentials' });
-      }
-    } else {
-      // Use in-memory storage
-      const foundUser = inMemoryUsers.find(u => u.email === email);
-      if (!foundUser) {
-        return res.status(401).json({ error: 'Invalid credentials' });
-      }
-
-      const validPassword = await bcrypt.compare(password, foundUser.password_hash);
-      if (!validPassword) {
-        return res.status(401).json({ error: 'Invalid credentials' });
-      }
-
-      user = {
-        id: foundUser.id,
-        email: foundUser.email,
-        first_name: foundUser.first_name,
-        onboarding_complete: foundUser.onboarding_complete || false
-      };
+    // Verify password
+    const validPassword = await bcrypt.compare(password, foundUser.password_hash);
+    if (!validPassword) {
+      return res.status(401).json({ error: 'Invalid credentials' });
     }
+
+    // Return user data (without password hash)
+    const user = {
+      id: foundUser.id,
+      email: foundUser.email,
+      first_name: foundUser.first_name,
+      onboarding_complete: foundUser.onboarding_complete || false
+    };
 
     // Generate token
     const token = jwt.sign(

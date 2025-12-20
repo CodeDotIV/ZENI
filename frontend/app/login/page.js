@@ -2,9 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
 export default function Login() {
   const router = useRouter()
@@ -23,21 +20,65 @@ export default function Login() {
     setError('')
 
     try {
-      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'
-      const response = await axios.post(`${API_URL}${endpoint}`, formData)
-
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('user', JSON.stringify(response.data.user))
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem('zeni_users') || '[]')
+      
+      if (isLogin) {
+        // Login: Find user by email
+        const user = users.find(u => u.email === formData.email)
+        if (!user || user.password !== formData.password) {
+          setError('Invalid email or password')
+          setLoading(false)
+          return
+        }
         
-        if (!response.data.user.onboarding_complete) {
+        // Set user data
+        localStorage.setItem('token', 'demo-token-' + user.id)
+        localStorage.setItem('user', JSON.stringify({
+          id: user.id,
+          email: user.email,
+          first_name: user.first_name,
+          onboarding_complete: user.onboarding_complete || false
+        }))
+        
+        if (!user.onboarding_complete) {
           router.push('/onboarding')
         } else {
           router.push('/dashboard')
         }
+      } else {
+        // Register: Check if user exists
+        if (users.find(u => u.email === formData.email)) {
+          setError('User already exists')
+          setLoading(false)
+          return
+        }
+        
+        // Create new user
+        const newUser = {
+          id: 'user-' + Date.now(),
+          email: formData.email,
+          password: formData.password, // In real app, hash this
+          first_name: formData.first_name || '',
+          onboarding_complete: false
+        }
+        
+        users.push(newUser)
+        localStorage.setItem('zeni_users', JSON.stringify(users))
+        
+        // Set user data
+        localStorage.setItem('token', 'demo-token-' + newUser.id)
+        localStorage.setItem('user', JSON.stringify({
+          id: newUser.id,
+          email: newUser.email,
+          first_name: newUser.first_name,
+          onboarding_complete: false
+        }))
+        
+        router.push('/onboarding')
       }
     } catch (err) {
-      setError(err.response?.data?.error || 'Something went wrong')
+      setError('Something went wrong')
     } finally {
       setLoading(false)
     }

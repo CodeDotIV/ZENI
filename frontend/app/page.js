@@ -2,11 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
-// Icons temporarily removed - install lucide-react to restore
-// import { Heart, Calendar, MessageCircle, CheckCircle } from 'lucide-react'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
 export default function Home() {
   const router = useRouter()
