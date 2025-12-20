@@ -2,9 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
 const QUESTIONS = [
   { id: 'field_of_study', question: "What are you studying?", type: 'text', required: true },
@@ -37,21 +34,23 @@ export default function Onboarding() {
   const handleComplete = async () => {
     setLoading(true)
     try {
-      const token = localStorage.getItem('token')
       const user = JSON.parse(localStorage.getItem('user') || '{}')
-
-      await axios.post(
-        `${API_URL}/api/auth/onboarding`,
-        {
-          user_id: user.id,
-          ...answers,
-          onboarding_complete: true
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-
-      // Update user in localStorage
-      localStorage.setItem('user', JSON.stringify({ ...user, onboarding_complete: true }))
+      
+      // Update user in localStorage with onboarding data
+      const updatedUser = {
+        ...user,
+        ...answers,
+        onboarding_complete: true
+      }
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+      
+      // Also update in users list
+      const users = JSON.parse(localStorage.getItem('zeni_users') || '[]')
+      const userIndex = users.findIndex(u => u.id === user.id)
+      if (userIndex !== -1) {
+        users[userIndex] = { ...users[userIndex], ...answers, onboarding_complete: true }
+        localStorage.setItem('zeni_users', JSON.stringify(users))
+      }
       
       router.push('/dashboard')
     } catch (error) {
@@ -68,8 +67,8 @@ export default function Onboarding() {
     : true
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-warm-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 flex items-center justify-center p-4">
+      <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 w-full max-w-2xl border border-white/20">
         <div className="mb-8">
           <div className="flex justify-between mb-2">
             <span className="text-sm text-gray-600">
