@@ -294,6 +294,62 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Our Team Section */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-4 text-white drop-shadow-lg">Meet Our Team</h2>
+          <p className="text-center text-white/90 mb-12 text-lg drop-shadow-md">The passionate developers behind ZENI</p>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Sai Manaswini - Project Head */}
+            <div className="bg-gradient-to-br from-purple-500 to-pink-500 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:rotate-1 transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-pulse">
+                👩‍💼
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-1">Sai Manaswini</h3>
+              <p className="text-white/90 font-semibold mb-3">Project Head</p>
+              <p className="text-white/80 text-sm mb-4">
+                Leading the vision and strategy for ZENI. Passionate about creating solutions that make student life easier and more organized.
+              </p>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+                <p className="text-white text-xs font-medium">CMR Institute of Technology</p>
+                <p className="text-white/80 text-xs">Hyderabad</p>
+              </div>
+            </div>
+
+            {/* Harshitha Reddy - Full Stack Developer */}
+            <div className="bg-gradient-to-br from-blue-500 to-cyan-500 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:-rotate-1 transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-bounce">
+                👩‍💻
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-1">Harshitha Reddy</h3>
+              <p className="text-white/90 font-semibold mb-3">Full Stack Developer</p>
+              <p className="text-white/80 text-sm mb-4">
+                Building beautiful and functional interfaces. Expert in creating seamless user experiences from frontend to backend.
+              </p>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+                <p className="text-white text-xs font-medium">CMR Institute of Technology</p>
+                <p className="text-white/80 text-xs">Hyderabad</p>
+              </div>
+            </div>
+
+            {/* Ankit Reddy - Backend Developer */}
+            <div className="bg-gradient-to-br from-green-500 to-emerald-500 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:rotate-1 transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-pulse" style={{ animationDelay: '0.2s' }}>
+                👨‍💻
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-1">Ankit Reddy</h3>
+              <p className="text-white/90 font-semibold mb-3">Backend Developer</p>
+              <p className="text-white/80 text-sm mb-4">
+                Architecting robust and scalable systems. Ensuring ZENI's backend is reliable, secure, and performant.
+              </p>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+                <p className="text-white text-xs font-medium">CMR Institute of Technology</p>
+                <p className="text-white/80 text-xs">Hyderabad</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="mt-20 text-center pb-16">
           <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 backdrop-blur-sm rounded-xl shadow-2xl p-12 border border-white/30 transform hover:scale-[1.02] transition-all duration-300 animate-pulse">

@@ -311,19 +311,65 @@ export default function Dashboard() {
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           {/* Recent Activity */}
           <div className="bg-gradient-to-br from-slate-600 to-gray-700 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30">
-            <h3 className="text-xl font-bold mb-4 text-white">Recent Activity</h3>
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+              <span className="text-2xl">📊</span>
+              Recent Activity
+            </h3>
             <div className="space-y-3">
-              {completedTasks.slice(0, 3).map(task => (
-                <div key={task.id} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-                  <span className="text-2xl">✅</span>
+              {/* Show completed tasks */}
+              {completedTasks.slice(0, 2).map(task => (
+                <div key={task.id} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 transform hover:scale-105 transition-all duration-300">
+                  <span className="text-2xl animate-pulse">✅</span>
                   <div className="flex-1">
                     <p className="text-white font-medium text-sm">{task.title}</p>
-                    <p className="text-white/70 text-xs">Completed recently</p>
+                    <p className="text-white/70 text-xs">
+                      Completed {task.updated_at ? new Date(task.updated_at).toLocaleDateString() : 'recently'}
+                    </p>
                   </div>
                 </div>
               ))}
-              {completedTasks.length === 0 && (
-                <p className="text-white/70 text-sm text-center py-4">No recent activity</p>
+              
+              {/* Show recently created tasks */}
+              {tasks
+                .filter(t => t.status === 'pending')
+                .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0))
+                .slice(0, 2)
+                .map(task => (
+                  <div key={task.id} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 transform hover:scale-105 transition-all duration-300">
+                    <span className="text-2xl">➕</span>
+                    <div className="flex-1">
+                      <p className="text-white font-medium text-sm">{task.title}</p>
+                      <p className="text-white/70 text-xs">
+                        Created {task.created_at ? new Date(task.created_at).toLocaleDateString() : 'recently'}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              
+              {/* Show upcoming deadlines */}
+              {upcomingTasks.slice(0, 1).map(task => (
+                <div key={task.id} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 transform hover:scale-105 transition-all duration-300">
+                  <span className="text-2xl animate-bounce">⏰</span>
+                  <div className="flex-1">
+                    <p className="text-white font-medium text-sm">{task.title}</p>
+                    <p className="text-white/70 text-xs">
+                      Due {task.deadline ? new Date(task.deadline).toLocaleDateString() : 'soon'}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              
+              {completedTasks.length === 0 && tasks.filter(t => t.status === 'pending').length === 0 && (
+                <div className="text-center py-6">
+                  <div className="text-4xl mb-2">📝</div>
+                  <p className="text-white/70 text-sm">No recent activity</p>
+                  <button
+                    onClick={() => router.push('/tasks/new')}
+                    className="mt-3 text-white/90 hover:text-white text-sm underline"
+                  >
+                    Create your first task
+                  </button>
+                </div>
               )}
             </div>
           </div>
