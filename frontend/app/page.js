@@ -48,7 +48,7 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
           <h1 className="text-6xl font-bold text-white mb-4 drop-shadow-lg">
-             Welcome <span className="text-yellow-300">ZENI</span>
+             Welcome to <span className="text-yellow-300">ZENI</span>
           </h1>
           <p className="text-2xl text-white/90 mb-8 drop-shadow-md">
             Your AI student companion who organizes your life without you having to think about it
