@@ -113,9 +113,9 @@ export default function Chat() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-warm-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-rose-500 to-orange-500 flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white/90 backdrop-blur-sm shadow-lg border-b border-white/20">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
           <button
             onClick={() => router.push('/dashboard')}
@@ -135,8 +135,8 @@ export default function Chat() {
         {messages.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-6xl mx-auto mb-4">❤️</div>
-            <h2 className="text-2xl font-bold text-gray-700 mb-2">Hi! I'm ZENI</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-md">Hi! I'm ZENI</h2>
+            <p className="text-white/90 drop-shadow-sm">
               I'm here to listen and support you. What's on your mind?
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function Chat() {
                 {/* ZENI Response */}
                 {msg.response && (
                   <div className="flex justify-start mb-4">
-                    <div className="bg-white rounded-lg px-4 py-2 max-w-md shadow-sm">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 max-w-md shadow-lg border border-white/30">
                       <p className="text-gray-800">{msg.response}</p>
                     </div>
                   </div>
@@ -162,7 +162,7 @@ export default function Chat() {
 
                 {!msg.response && loading && (
                   <div className="flex justify-start mb-4">
-                    <div className="bg-white rounded-lg px-4 py-2">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/30">
                       <div className="flex gap-1">
                         <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce"></div>
                         <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -179,7 +179,7 @@ export default function Chat() {
       </div>
 
       {/* Input */}
-      <div className="bg-white border-t border-gray-200">
+      <div className="bg-white/90 backdrop-blur-sm border-t border-white/30 shadow-lg">
         <div className="container mx-auto px-4 py-4 max-w-4xl">
           <form onSubmit={handleSend} className="flex gap-2">
             <input

@@ -49,9 +49,9 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
         </div>
       </div>
     )
@@ -66,9 +66,9 @@ export default function Dashboard() {
   })
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-warm-50">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white/90 backdrop-blur-sm shadow-lg border-b border-white/20">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-primary-600">ZENI</h1>
           <div className="flex items-center gap-4">
@@ -86,7 +86,7 @@ export default function Dashboard() {
       <div className="container mx-auto px-4 py-8">
         {/* Quick Stats */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-white/30">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-600 text-sm">Today's Tasks</p>
@@ -96,7 +96,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-white/30">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-600 text-sm">Pending Tasks</p>
@@ -106,7 +106,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-white/30">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-600 text-sm">Completed</p>
@@ -122,7 +122,7 @@ export default function Dashboard() {
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-6">
           {/* Tasks List */}
-          <div className="md:col-span-2 bg-white rounded-xl shadow-lg p-6">
+          <div className="md:col-span-2 bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-white/30">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Your Tasks</h2>
               <button
@@ -179,7 +179,7 @@ export default function Dashboard() {
 
           {/* Quick Actions */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-white/30">
               <h3 className="text-xl font-bold mb-4">Quick Actions</h3>
               <div className="space-y-3">
                 <button

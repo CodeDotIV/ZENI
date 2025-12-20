@@ -67,8 +67,8 @@ export default function Onboarding() {
     : true
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-warm-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 flex items-center justify-center p-4">
+      <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 w-full max-w-2xl border border-white/20">
         <div className="mb-8">
           <div className="flex justify-between mb-2">
             <span className="text-sm text-gray-600">
