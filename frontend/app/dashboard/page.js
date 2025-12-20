@@ -333,85 +333,86 @@ export default function Dashboard() {
               {/* Profile Dropdown - Classic Style */}
               {showProfile && (
                 <div 
-                  className="absolute right-0 mt-1 w-64 bg-white rounded-lg shadow-xl border border-gray-200 z-[9999] animate-fadeIn overflow-hidden"
+                  className="absolute right-0 top-full pt-2 w-72 z-[9999] animate-fadeIn"
                   onMouseEnter={() => setShowProfile(true)}
                   onMouseLeave={() => setShowProfile(false)}
                 >
-                    {/* Profile Header */}
-                    <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
-                      <div className="flex items-center gap-3">
+                  <div className="bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 rounded-xl shadow-2xl border-2 border-cyan-200/50 backdrop-blur-md overflow-hidden">
+                  {/* Profile Header */}
+                  <div className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 px-4 py-4 border-b border-white/20">
+                    <div className="flex items-center gap-3">
                       {user?.profile_picture ? (
                         <img 
                           src={user.profile_picture} 
                           alt="Profile" 
-                            className="w-10 h-10 rounded-full object-cover border border-gray-300"
+                            className="w-12 h-12 rounded-full object-cover border-2 border-white/50 shadow-lg"
                         />
                       ) : (
-                          <div className="w-10 h-10 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center">
-                            <span className="text-lg">👤</span>
+                          <div className="w-12 h-12 rounded-full bg-white/20 border-2 border-white/50 flex items-center justify-center shadow-lg">
+                            <span className="text-xl">👤</span>
                         </div>
                       )}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-gray-900 truncate">{user?.first_name || 'User'}</p>
-                          <p className="text-xs text-gray-500 truncate">{user?.email || ''}</p>
+                          <p className="text-sm font-bold text-white truncate">{user?.first_name || 'User'}</p>
+                          <p className="text-xs text-white/80 truncate">{user?.email || ''}</p>
                     </div>
                   </div>
                     </div>
                     
                     {/* Profile Info */}
-                    <div className="px-4 py-3 max-h-80 overflow-y-auto">
-                      <div className="space-y-2 text-sm">
+                    <div className="px-4 py-3 max-h-80 overflow-y-auto bg-gradient-to-br from-white/60 to-blue-50/40">
+                      <div className="space-y-2.5 text-sm">
                     {user?.field_of_study && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Field of Study</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">📚 Field of Study</p>
                             <p className="text-gray-900 font-medium">{user.field_of_study}</p>
                       </div>
                     )}
                         {user?.university && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">University</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">🏛️ University</p>
                             <p className="text-gray-900 font-medium">{user.university}</p>
                       </div>
                     )}
                         {user?.year_of_study && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Year of Study</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">📅 Year of Study</p>
                             <p className="text-gray-900 font-medium">{user.year_of_study}</p>
                       </div>
                     )}
                     {user?.num_classes && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Classes This Semester</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg border border-orange-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">🎓 Classes This Semester</p>
                             <p className="text-gray-900 font-medium">{user.num_classes}</p>
                       </div>
                     )}
                     {user?.phone && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Phone</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg border border-cyan-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">📱 Phone</p>
                             <p className="text-gray-900 font-medium">{user.phone}</p>
                       </div>
                     )}
                     {user?.extracurriculars && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Extracurriculars</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg border border-pink-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">⚽ Extracurriculars</p>
                             <p className="text-gray-900 font-medium">{user.extracurriculars}</p>
                       </div>
                     )}
                     {user?.wake_time && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Wake Time</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">⏰ Wake Time</p>
                             <p className="text-gray-900 font-medium">{user.wake_time}</p>
                       </div>
                     )}
                     {user?.energy_pattern && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Energy Pattern</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">⚡ Energy Pattern</p>
                             <p className="text-gray-900 font-medium">{user.energy_pattern}</p>
                       </div>
                     )}
                     {user?.biggest_stress && (
-                          <div className="py-1">
-                            <p className="text-xs text-gray-500">Biggest Stress</p>
+                          <div className="py-2 px-3 bg-gradient-to-r from-red-50 to-pink-50 rounded-lg border border-red-100">
+                            <p className="text-xs text-gray-600 font-semibold mb-0.5">😰 Biggest Stress</p>
                             <p className="text-gray-900 font-medium">{user.biggest_stress}</p>
                       </div>
                     )}
@@ -419,14 +420,14 @@ export default function Dashboard() {
                       </div>
                     
                     {/* Actions */}
-                    <div className="border-t border-gray-200 px-2 py-2">
+                    <div className="border-t border-cyan-200/50 bg-gradient-to-br from-blue-50/80 to-indigo-50/60 px-3 py-3 backdrop-blur-sm">
                       <button
                         onClick={() => {
                           fileInputRef.current?.click()
                         }}
-                        className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gradient-to-r hover:from-cyan-100 hover:to-blue-100 rounded-lg transition-all duration-200 flex items-center gap-2 hover:shadow-md transform hover:scale-[1.02]"
                       >
-                        <span>📷</span>
+                        <span className="text-base">📷</span>
                         Change Photo
                       </button>
                       <input
@@ -442,9 +443,9 @@ export default function Dashboard() {
                           setShowProfile(false)
                           router.push('/onboarding')
                         }}
-                          className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors flex items-center gap-2"
+                          className="w-full text-left px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-indigo-100 rounded-lg transition-all duration-200 flex items-center gap-2 hover:shadow-md transform hover:scale-[1.02] mt-1"
                       >
-                          <span>⚙️</span>
+                          <span className="text-base">⚙️</span>
                           Complete Profile
                       </button>
                     )}
@@ -453,13 +454,14 @@ export default function Dashboard() {
                           setShowProfile(false)
                           handleLogout()
                         }}
-                        className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md transition-colors flex items-center gap-2 mt-1"
+                        className="w-full text-left px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-gradient-to-r hover:from-red-100 hover:to-pink-100 rounded-lg transition-all duration-200 flex items-center gap-2 hover:shadow-md transform hover:scale-[1.02] mt-1"
                       >
-                        <span>🚪</span>
+                        <span className="text-base">🚪</span>
               Logout
             </button>
                     </div>
                   </div>
+                </div>
               )}
             </div>
           </div>
