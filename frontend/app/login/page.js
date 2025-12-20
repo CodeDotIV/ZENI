@@ -86,16 +86,16 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 flex items-center justify-center p-4">
-      <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 w-full max-w-md border border-white/20">
-        <h1 className="text-3xl font-bold text-center mb-2">
+      <div className="bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 backdrop-blur-sm rounded-xl shadow-2xl p-8 w-full max-w-md border border-white/30 transform hover:scale-[1.02] transition-all duration-300">
+        <h1 className="text-3xl font-bold text-center mb-2 text-white drop-shadow-lg">
           {isLogin ? 'Welcome Back!' : 'Join ZENI'}
         </h1>
-        <p className="text-center text-gray-600 mb-8">
+        <p className="text-center text-white/90 mb-8 drop-shadow-md">
           {isLogin ? 'Sign in to continue' : 'Start your journey with ZENI'}
         </p>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="bg-red-500/90 backdrop-blur-sm border border-red-300 text-white px-4 py-3 rounded-lg mb-4 shadow-lg animate-pulse">
             {error}
           </div>
         )}
@@ -103,21 +103,21 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1 drop-shadow-sm">
                 First Name
               </label>
               <input
                 type="text"
                 value={formData.first_name}
                 onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent text-gray-800 placeholder-gray-500 transition-all duration-300"
                 placeholder="Maya"
               />
             </div>
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-white mb-1 drop-shadow-sm">
               Email
             </label>
             <input
@@ -125,13 +125,13 @@ export default function Login() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent text-gray-800 placeholder-gray-500 transition-all duration-300"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-white mb-1 drop-shadow-sm">
               Password
             </label>
             <input
@@ -140,7 +140,7 @@ export default function Login() {
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
               minLength={6}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent text-gray-800 placeholder-gray-500 transition-all duration-300"
               placeholder="••••••••"
             />
           </div>
@@ -148,16 +148,23 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-3 rounded-lg font-semibold hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 disabled:opacity-50 shadow-xl hover:shadow-2xl transform hover:scale-105 disabled:transform-none"
           >
-            {loading ? 'Loading...' : (isLogin ? 'Sign In' : 'Sign Up')}
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <span className="animate-spin mr-2">⏳</span>
+                Loading...
+              </span>
+            ) : (
+              isLogin ? 'Sign In' : 'Sign Up'
+            )}
           </button>
         </form>
 
         <div className="mt-6 text-center">
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className="text-primary-600 hover:text-primary-700"
+            className="text-white/90 hover:text-white transition-all duration-300 font-medium hover:underline"
           >
             {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
           </button>
