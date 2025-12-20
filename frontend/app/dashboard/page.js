@@ -379,10 +379,40 @@ export default function Dashboard() {
                             <p className="text-gray-900 font-medium">{user.year_of_study}</p>
                       </div>
                     )}
+                    {user?.num_classes && (
+                          <div className="py-1">
+                            <p className="text-xs text-gray-500">Classes This Semester</p>
+                            <p className="text-gray-900 font-medium">{user.num_classes}</p>
+                      </div>
+                    )}
                     {user?.phone && (
                           <div className="py-1">
                             <p className="text-xs text-gray-500">Phone</p>
                             <p className="text-gray-900 font-medium">{user.phone}</p>
+                      </div>
+                    )}
+                    {user?.extracurriculars && (
+                          <div className="py-1">
+                            <p className="text-xs text-gray-500">Extracurriculars</p>
+                            <p className="text-gray-900 font-medium">{user.extracurriculars}</p>
+                      </div>
+                    )}
+                    {user?.wake_time && (
+                          <div className="py-1">
+                            <p className="text-xs text-gray-500">Wake Time</p>
+                            <p className="text-gray-900 font-medium">{user.wake_time}</p>
+                      </div>
+                    )}
+                    {user?.energy_pattern && (
+                          <div className="py-1">
+                            <p className="text-xs text-gray-500">Energy Pattern</p>
+                            <p className="text-gray-900 font-medium">{user.energy_pattern}</p>
+                      </div>
+                    )}
+                    {user?.biggest_stress && (
+                          <div className="py-1">
+                            <p className="text-xs text-gray-500">Biggest Stress</p>
+                            <p className="text-gray-900 font-medium">{user.biggest_stress}</p>
                       </div>
                     )}
                       </div>
