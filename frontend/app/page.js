@@ -469,12 +469,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Harshitha Reddy - Full Stack Developer */}
+            {/* Harshitha - Full Stack Developer */}
             <div className="bg-gradient-to-br from-cyan-500 to-blue-600 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:-rotate-1 transition-all duration-300 text-center">
               <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-bounce">
                 👩‍💻
               </div>
-              <h3 className="text-2xl font-bold text-white mb-1">Harshitha Reddy</h3>
+              <h3 className="text-2xl font-bold text-white mb-1">Harshitha</h3>
               <p className="text-white/90 font-semibold mb-3">Full Stack Developer</p>
               <p className="text-white/80 text-sm mb-4">
                 Building beautiful and functional interfaces. Expert in creating seamless user experiences from frontend to backend.
@@ -485,12 +485,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Ankit Reddy - Backend Developer */}
+            {/* Ankith - Backend Developer */}
             <div className="bg-gradient-to-br from-pink-500 to-rose-600 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:rotate-1 transition-all duration-300 text-center">
               <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-pulse" style={{ animationDelay: '0.2s' }}>
                 👨‍💻
               </div>
-              <h3 className="text-2xl font-bold text-white mb-1">Ankit Reddy</h3>
+              <h3 className="text-2xl font-bold text-white mb-1">Ankith</h3>
               <p className="text-white/90 font-semibold mb-3">Backend Developer</p>
               <p className="text-white/80 text-sm mb-4">
                 Architecting robust and scalable systems. Ensuring ZENI's backend is reliable, secure, and performant.
