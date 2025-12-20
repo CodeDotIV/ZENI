@@ -53,7 +53,7 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
           <h1 className="text-6xl font-bold text-gray-900 mb-4">
-            Hi! I'm <span className="text-primary-600">ZENI</span>
+             Welcome <span className="text-primary-600">ZENI</span>
           </h1>
           <p className="text-2xl text-gray-600 mb-8">
             Your AI student companion who organizes your life without you having to think about it
