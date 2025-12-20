@@ -471,7 +471,7 @@ export default function Home() {
 
             {/* Harshitha - Full Stack Developer */}
             <div className="bg-gradient-to-br from-cyan-500 to-blue-600 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/30 transform hover:scale-105 hover:-rotate-1 transition-all duration-300 text-center">
-              <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl animate-bounce">
+              <div className="w-24 h-24 bg-white/30 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl">
                 👩‍💻
               </div>
               <h3 className="text-2xl font-bold text-white mb-1">Harshitha</h3>
